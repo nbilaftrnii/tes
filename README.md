@@ -414,14 +414,12 @@ Aturan-aturan ini diuji otomatis di folder `tests/` (misalnya `acid.test.ts` dan
 
 ## 👥 Anggota Tim
 
-Tim terdiri dari maksimal 3 orang sesuai juknis lomba. Baris pertama adalah **ketua tim** sekaligus narahubung utama.
-
 <div align="center">
 
 | **Nama** | **NIM** | **Peran** | **Kontribusi** | **GitHub** |
-|---|---|---|---|---|---|
-| (Taufik Ramadhani) | (2409116001) | Ketua tim | backend dan database | [![GitHub](https://img.shields.io/badge/-rramaaare-black?logo=github&style=flat-square)](https://github.com/rramaaare) |
-| Ahmad Sepriza | 2409116025 | Anggota | UI/UX dan frontend | |
+|---|---|---|---|---|
+| Taufik Ramadhani | 2409116001 | Ketua tim | backend dan database | [![GitHub](https://img.shields.io/badge/-rramaaare-black?logo=github&style=flat-square)](https://github.com/rramaaare) |
+| Ahmad Sepriza | 2409116025 | Anggota | UI/UX dan frontend |  |
 | Nabila Fitriani | 2509116063 | Anggota | dokumentasi dan pengujian | [![GitHub](https://img.shields.io/badge/-nbilaftrnii-black?logo=github&style=flat-square)](https://github.com/nbilaftrnii) |
 
 </div>
