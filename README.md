@@ -243,8 +243,6 @@ server/services/*.ts          ← logika + transaksi database
 Prisma → MySQL
 ```
 
-Panduan lengkap untuk membaca dan menjelaskan kode ada di [`docs/ALUR-KODE.md`](docs/ALUR-KODE.md).
-
 ---
 
 ## 🚀 Cara Menjalankan Proyek
