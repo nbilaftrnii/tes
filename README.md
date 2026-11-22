@@ -1,6 +1,6 @@
 <div align="center">
-
-
+  
+# 🧵 MULAWARMANESIA
 
 <a href="https://github.com/rramaaare/mulawarmanesia">
   <img src="https://readme-typing-svg.demolab.com?font=Poppins&weight=600&size=22&duration=3200&pause=900&color=C12822&center=true&vCenter=true&width=720&lines=Desain+seragam+sendiri+langsung+di+browser;Pesan+dan+bayar+tanpa+ribet;Pantau+status+pesanan+kapan+saja;Dibuat+untuk+UMKM+konveksi+Samarinda" alt="Typing animation" />
@@ -78,10 +78,12 @@ e. Mendukung UMKM lokal agar lebih siap bersaing lewat pemanfaatan teknologi dig
 
 ### 🧑 Fitur untuk Pelanggan
 
-**🏠 Landing Page**
+**1. Landing Page**
+
 Halaman awal berisi profil usaha, produk PDH & VEST, cara pesan, portofolio, dan testimoni, lengkap dengan efek paralaks. Ada juga halaman **Panduan Ukuran** untuk membantu memilih ukuran yang pas.
 
-**🎨 Editor Desain**
+**2. Editor Desain**
+
 Pelanggan bisa membuat desain seragam langsung di browser:
 - Pilih model (PDH atau VEST), kategori desain, dan bahan
 - Atur warna tiap bagian pakaian
@@ -90,38 +92,48 @@ Pelanggan bisa membuat desain seragam langsung di browser:
 - Lihat tampak depan dan belakang, plus undo/redo dan zoom
 - Draf tersimpan otomatis di browser, jadi tidak hilang kalau tab ditutup
 
-**🧾 Halaman Pesanan**
+**3. Halaman Pesanan**
+
 Isi ukuran dan jumlah (bisa pakai nama per orang), data pemesan, pengiriman (kirim ke alamat atau ambil di workshop), lalu pilih bayar **Lunas** atau **DP 50%**. Minimal total pesanan **12 pcs**, dan harga dihitung otomatis termasuk diskon volume.
 
-**💳 Pembayaran**
+**4. Pembayaran**
+
 Pilih metode QRIS, Virtual Account, atau e-wallet lewat payment gateway. Pada versi demo dipakai simulator gateway. Pesanan yang tidak dibayar dalam **24 jam** kedaluwarsa otomatis.
 
-**🔎 Lacak Pesanan**
+**5. Lacak Pesanan**
+
 Cek status pakai nomor pesanan dan nomor WhatsApp, lengkap dengan timeline 8 tahap. Pelanggan juga bisa melihat alasan revisi jika desainnya diminta diperbaiki.
 
 ### 👷 Fitur untuk Admin
 
-**📊 Dashboard**
+**1. Dashboard**
+
 Ringkasan pesanan dan pendapatan, tren penjualan, kategori dan ukuran terlaris, kapasitas produksi, konversi, dan warna kain yang paling laku.
 
-**📦 Kelola Pesanan**
+**2. Kelola Pesanan**
+
 Lihat daftar pesanan dengan pencarian dan filter status, buka detail desain dan unduh file logo, ubah status produksi, minta revisi ke pelanggan, cetak **lembar produksi** satu halaman untuk workshop, dan ekspor data ke CSV.
 
-**🏭 Produksi**
+**3. Produksi**
+
 Antrean kerja workshop: pesanan yang sedang diproduksi, di tahap QC, dan siap kirim, lengkap dengan total pcs tiap tahap.
 
 ### 🛠️ Fitur Tambahan Superadmin
 
 **🗂️ Master Data**
+
 Atur harga dasar, biaya dekorasi, palet warna dan stok kain (bisa tambah warna baru), serta tarif ongkir.
 
 **👤 Akun Admin**
+
 Tambah akun (pilih peran Admin atau Superadmin), nonaktifkan atau aktifkan akun, dan reset kata sandi. Superadmin tidak bisa menonaktifkan dirinya sendiri, dan harus selalu ada minimal satu superadmin aktif.
 
 **⚙️ Pengaturan**
+
 Atur kapasitas produksi mingguan dan batas waktu bayar pesanan baru.
 
 **📜 Log Aktivitas**
+
 Catatan perubahan harga, biaya, stok, ongkir, akun, pengaturan, dan status pesanan.
 
 ---
@@ -142,17 +154,6 @@ Admin dan Superadmin **masuk lewat form login yang sama** (`/admin/login`). Pera
 | Log aktivitas | ❌ | ✅ |
 
 Pembatasan ini dijaga di **server** pada setiap permintaan, bukan hanya disembunyikan di menu. Admin biasa yang membuka halaman superadmin lewat alamat langsung akan dikembalikan ke dashboard, dan permintaan API-nya ditolak dengan kode 403.
-
-```mermaid
-flowchart TD
-    A([Buka /admin/login]) --> B[/Isi email dan kata sandi/]
-    B --> C{Cocok dan akun aktif?}
-    C -- Tidak --> D["Pesan gagal. Gagal 5 kali = akun dikunci 15 menit"] --> B
-    C -- Ya --> E["Sesi login tersimpan, berlaku 8 jam"]
-    E --> F{Peran akun?}
-    F -- ADMIN --> G["Dashboard Admin: Pesanan, Produksi"]
-    F -- SUPERADMIN --> H["Dashboard Superadmin: semua menu dan bagian Sistem"]
-```
 
 ---
 
@@ -176,7 +177,7 @@ flowchart TD
 
 ## 🧭 Perancangan Sistem
 
-Flowchart lengkap semua halaman (pelanggan, login admin dan superadmin, dashboard admin, dashboard superadmin, kelola pesanan, master data) ada di [`docs/mulawaranesia_flowchart_v4.drawio`](docs/mulawaranesia_flowchart_v4.drawio). Buka lewat [app.diagrams.net](https://app.diagrams.net/).
+Flowchart lengkap semua halaman (pelanggan, login admin dan superadmin, dashboard admin, dashboard superadmin, kelola pesanan, master data) ada di [app.diagrams.net](https://app.diagrams.net/).
 
 ### 🔄 Alur Pemesanan Pelanggan
 
@@ -221,101 +222,7 @@ stateDiagram-v2
     selesai --> [*]
 ```
 
-### 🗂️ ERD (Entity Relationship Diagram)
-
-```mermaid
-erDiagram
-    CATEGORY ||--o{ ORDER_ITEM : dipakai
-    MATERIAL ||--o{ ORDER_ITEM : dipakai
-    ORDER ||--o{ ORDER_ITEM : berisi
-    ORDER ||--o{ PAYMENT : dibayar_lewat
-    ORDER ||--o{ ORDER_STATUS_LOG : punya_riwayat
-    ORDER_ITEM ||--o{ ORDER_SIZE : punya
-    ORDER_ITEM ||--o{ ORDER_NAME : punya
-    ORDER_ITEM ||--o{ ORDER_ASSET : punya
-
-    ORDER {
-        int id PK
-        string code "MLW-YYMM-NNNN"
-        enum status
-        enum paymentState
-        string customerName
-        string whatsapp
-        string trackingToken "unik"
-        int total
-        datetime expiresAt
-    }
-    ORDER_ITEM {
-        int id PK
-        enum product "PDH atau VEST"
-        json designJson
-        int unitPrice
-    }
-    ORDER_SIZE {
-        string size
-        int qty
-    }
-    ORDER_NAME {
-        string name
-        string size
-    }
-    ORDER_ASSET {
-        string fileName
-        string technique "bordir atau sablon"
-        string position
-    }
-    PAYMENT {
-        string gatewayRef "unik"
-        string method "qris, va, ewallet"
-        int amount
-        enum status
-    }
-    ORDER_STATUS_LOG {
-        enum status
-        string changedBy
-        datetime changedAt
-    }
-    CATEGORY {
-        string name
-        int basePrice
-    }
-    MATERIAL {
-        string name
-        int surcharge
-    }
-    FABRIC_COLOR {
-        string name
-        string hex
-        boolean inStock
-    }
-    SHIPPING_RATE {
-        string zone
-        int fee
-    }
-    CITY {
-        string name
-        string zone
-    }
-    ADMIN_USER {
-        string email
-        enum role "ADMIN atau SUPERADMIN"
-        boolean active
-    }
-    AUDIT_LOG {
-        string actorEmail
-        string action
-        string target
-    }
-    SETTING {
-        string key
-        string value
-    }
-    ORDER_COUNTER {
-        string period
-        int lastNumber
-    }
-```
-
+---
 ### 📐 Alur Kode
 
 ```
@@ -513,11 +420,11 @@ Tim terdiri dari maksimal 3 orang sesuai juknis lomba. Baris pertama adalah **ke
 
 <div align="center">
 
-| **Nama** | **NIM** | **Kelas** | **Peran** | **Kontribusi** | **GitHub** |
+| **Nama** | **NIM** | **Peran** | **Kontribusi** | **GitHub** |
 |---|---|---|---|---|---|
-| (isi nama ketua) | (isi NIM) | (isi kelas) | Ketua tim | (isi, misalnya: backend dan database) | [![GitHub](https://img.shields.io/badge/-rramaaare-black?logo=github&style=flat-square)](https://github.com/rramaaare) |
-| (isi nama anggota 2) | (isi NIM) | (isi kelas) | Anggota | (isi, misalnya: UI/UX dan frontend) | [![GitHub](https://img.shields.io/badge/-username-black?logo=github&style=flat-square)](https://github.com/) |
-| (isi nama anggota 3) | (isi NIM) | (isi kelas) | Anggota | (isi, misalnya: dokumentasi dan pengujian) | [![GitHub](https://img.shields.io/badge/-username-black?logo=github&style=flat-square)](https://github.com/) |
+| (Taufik Ramadhani) | (2409116001) | Ketua tim | backend dan database | [![GitHub](https://img.shields.io/badge/-rramaaare-black?logo=github&style=flat-square)](https://github.com/rramaaare) |
+| Ahmad Sepriza | 2409116025 | Anggota | UI/UX dan frontend | |
+| Nabila Fitriani | 2509116063 | Anggota | dokumentasi dan pengujian | [![GitHub](https://img.shields.io/badge/-nbilaftrnii-black?logo=github&style=flat-square)](https://github.com/nbilaftrnii) |
 
 </div>
 
