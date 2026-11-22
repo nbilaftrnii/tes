@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=12,20,24&height=230&section=header&text=MULAWARMANESIA&fontSize=56&fontColor=ffffff&animation=fadeIn&fontAlignY=38&desc=Custom%20Seragam%20PDH%20%26%20VEST%20Secara%20Online&descAlignY=60&descSize=18" alt="Header MULAWARMANESIA" />
+
 
 <a href="https://github.com/rramaaare/mulawarmanesia">
   <img src="https://readme-typing-svg.demolab.com?font=Poppins&weight=600&size=22&duration=3200&pause=900&color=C12822&center=true&vCenter=true&width=720&lines=Desain+seragam+sendiri+langsung+di+browser;Pesan+dan+bayar+tanpa+ribet;Pantau+status+pesanan+kapan+saja;Dibuat+untuk+UMKM+konveksi+Samarinda" alt="Typing animation" />
